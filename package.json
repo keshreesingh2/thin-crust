@@ -1,0 +1,20 @@
+{
+  "name": "thin-crust",
+  "version": "0.0.1",
+  "description": "browser automation made easy, less pain more gain, developer friendly",
+  "main": "index.js",
+  "author": "Keshree Raghuwanshi <keshreesingh2@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "cukes": "cucumber-js -p test",
+    "gen-report": "node scripts/generate-reports.js",
+    "wd:update": "yarn webdriver-manager update",
+    "wd:start": "yarn webdriver-manager start"
+  },
+  "dependencies": {
+    "cucumber": "^4.2.1",
+    "cucumber-html-reporter": "^4.0.3",
+    "selenium-webdriver": "^4.0.0-alpha.1",
+    "webdriver-manager": "^12.1.0"
+  }
+}
