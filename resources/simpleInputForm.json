@@ -1,0 +1,26 @@
+{
+	"form1": {
+		"scenario": [
+			{
+				"input": "hello world"
+			},
+			{
+				"input": "hello There"
+			}
+		]
+	},
+	"form2": {
+		"scenario": [
+			{
+				"input1": 10,
+				"input2": 10,
+				"total": 20
+			},
+			{
+				"input1": 10,
+				"input2": 20,
+				"total": 30
+			}
+		]
+	}
+}

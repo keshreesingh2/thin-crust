@@ -1,3 +1,3 @@
 module.exports = {
-    test: 'features/**/*.feature -r support -f json:results/result.json'
+    test: 'features/**/*.feature -r support -t @SimpleInputForm -f json:results/result.json'
 }
