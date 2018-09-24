@@ -6,7 +6,7 @@
   "author": "Keshree Raghuwanshi <keshreesingh2@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "cukes": "cucumber-js -p test",
+    "test-cukes": "cucumber-js -p test",
     "gen-report": "node scripts/generate-reports.js",
     "wd:update": "yarn webdriver-manager update",
     "wd:start": "yarn webdriver-manager start"
