@@ -2,7 +2,10 @@
   "name": "thin-crust",
   "version": "0.0.1",
   "description": "browser automation made easy, less pain more gain, developer friendly",
-  "main": "index.js",
+	"main": "support/allSteps.js",
+	"files": [
+		"support"
+	],
   "author": "Keshree Raghuwanshi <keshreesingh2@gmail.com>",
   "license": "MIT",
   "scripts": {
