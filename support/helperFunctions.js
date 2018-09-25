@@ -1,4 +1,4 @@
-const { until, By } = require('selenium-webdriver');
+const { until, By, Key } = require('selenium-webdriver');
 let KK = {
 	finders: {
 		findByPartialButtonText: (partialText, using) => {
@@ -84,7 +84,8 @@ const errors = {
 const inputTypes = {
 	DROPDOWN: 'dropdown',
 	RADIO: 'radio',
-	CHECKBOX: 'checkbox'
+	CHECKBOX: 'checkbox',
+	RANGE: 'range'
 };
 let helperObj = {
 	buildDriver: function () {
@@ -147,7 +148,9 @@ let helperObj = {
 		await KK.driver.wait(
 			until.elementIsVisible(locatedEl),
 			timeouts.TASK_TIMEOUT,
-			`element with: ${row.locateBy} and ${row.partialText} ${errors.NOT_DISPLAYED}`
+			`element with: ${row.locateBy} and ${row.partialText} ${
+			errors.NOT_DISPLAYED
+			}`
 		);
 		return locatedEl;
 	},
@@ -190,6 +193,19 @@ let helperObj = {
 			inputRow.inputType == inputTypes.RADIO
 		) {
 			el = await helperObj.clickUntilClicked(inputRow);
+		} else if (inputRow.inputType == inputTypes.RANGE) {
+			let inputValArr = inputRow.value.split('-', 2);
+			if (inputValArr[0] == "left") {
+				for (let i = 0; i < inputValArr[1]; i++) {
+					el = await inputEl.sendKeys(Key.LEFT);
+				}
+			} else if (inputValArr[0] == "right") {
+				for (let i = 0; i < inputValArr[1]; i++) {
+					el = await inputEl.sendKeys(Key.RIGHT);
+				}
+			} else {
+				throw new Error('wrong input value for range input');
+			}
 		} else {
 			el = await inputEl.sendKeys(inputRow.value);
 		}
@@ -210,10 +226,13 @@ let helperObj = {
 			return '';
 		} else if (expression.startsWith('${') && expression.endsWith('}')) {
 			let myWorld = world;
-			let trimmedExpression = expression.substring(2, expression.length - 1)
+			let trimmedExpression = expression.substring(
+				2,
+				expression.length - 1
+			);
 			var deep_value = function (o, s) {
 				s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
-				s = s.replace(/^\./, '');           // strip a leading dot
+				s = s.replace(/^\./, ''); // strip a leading dot
 				var a = s.split('.');
 				for (var i = 0, n = a.length; i < n; ++i) {
 					var k = a[i];

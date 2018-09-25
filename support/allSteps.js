@@ -47,8 +47,7 @@ defineStep(
 );
 defineStep(/^User "(enters)" following form fields$/, async function (action, inputTable) {
 	let inputRows = inputTable.hashes();
-	let inputEl
-	let world = this;
+	let inputEl, world = this;
 	for (let inputRow of inputRows) {
 		inputRow.partialText = evaluateExpression(world, inputRow.partialText)
 		inputRow.value = evaluateExpression(world, inputRow.value)
